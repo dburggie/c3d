@@ -1,6 +1,6 @@
 # c3d
 
-### A 3D Vector space simulation library!
+A 3D Vector space simulation library!
 
 ## About the Project
 
