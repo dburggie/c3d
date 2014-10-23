@@ -1,6 +1,8 @@
-# **c3d** - A 3D Vector space simulation library!
+# `c3d` 
 
-## About **c3d**
+A 3D Vector space simulation library!
+
+## About `c3d`
 
 Play with Vectors (`c3d::Vector`) and Rays (`c3d::Ray`) (that's it so far, more to come)!
 
