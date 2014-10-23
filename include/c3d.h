@@ -83,6 +83,52 @@ namespace c3d
 			friend std::ostream & operator<<(std::ostream & os, const Ray & ray);
 		
 	};
+	
+	
+	class Surface
+	{
+		protected:
+			
+			Vector position;
+			
+			Vector axisX; //direction of 'face'
+			Vector axisY; //direction of 'up'
+			Vector axisZ; //direction of 'right'
+		
+		public:
+			
+			//constructors plus plus
+			Surface(); //default
+			Surface(const Vector & pos, const Vector & ox, const Vector & oy);
+			Surface(const Surface & surface); //copy constructor
+			Surface & copy(const Surface & surface);
+			
+			//getters / setters
+			Surface & setPosition(const Vector & pos);
+			
+			Surface & setAxisX(const Vector & v);
+			Surface & setAxisY(const Vector & v);
+			Surface & setAxisZ(const Vector & v);
+			
+			Vector & getPosition();
+			
+			Vector & getAxisX();
+			Vector & getAxisY();
+			Vector & getAxisZ();
+			
+			Surface & copyPositionTo(Vector & v);
+			
+			Surface & copyAxisXTo(Vector & v);
+			Surface & copyAxisYTo(Vector & v);
+			Surface & copyAxisZTo(Vector & v);
+			
+			Surface & normalize(); // squares xyz axes relative to 'up' (y-axis)
+			
+			//now for the pure-virtual functions
+			virtual Surface & clone() = 0;
+			virtual double intersection(Ray & ray) = 0; //purely virtual
+			
+	};
 }
 
 #endif
