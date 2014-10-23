@@ -117,8 +117,8 @@ namespace c3d
 	Surface & Surface::normalize()
 	{
 		axisY.normalize(); //Y is now length one
-		axisZ.copy(axisX).cross(axisY).normalize(); //z perpendicular to y and y
-		axisX.copy(axisY).cross(axisZ).normalize(); //x perpendicular to x and y
+		axisZ.copy(axisX).cross(axisY).normalize(); //z perpendicular to x and y
+		axisX.copy(axisY).cross(axisZ).normalize(); //x perpendicular to y and z
 		return *this;
 	}
 	
