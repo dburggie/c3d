@@ -53,15 +53,33 @@ namespace c3d
 		return *this;
 	}
 	
+	Surface & Surface::setAxisX(double x, double y, double z)
+	{
+		axisX.setxyz(x,y,z);
+		return *this;
+	}
+	
 	Surface & Surface::setAxisX(const Vector & v)
 	{
 		axisX.copy(v);
 		return *this;
 	}
 	
+	Surface & Surface::setAxisY(double x, double y, double z)
+	{
+		axisY.setxyz(x,y,z);
+		return *this;
+	}
+	
 	Surface & Surface::setAxisY(const Vector & v)
 	{
 		axisY.copy(v);
+		return *this;
+	}
+	
+	Surface & Surface::setAxisZ(double x, double y, double z)
+	{
+		axisZ.setxyz(x,y,z);
 		return *this;
 	}
 	Surface & Surface::setAxisZ(const Vector & v)
