@@ -177,10 +177,16 @@ namespace c3d
 			virtual Surface & copy(const Surface & surface);
 			
 			//getters / setters
+			virtual Surface & setPosition(double x, double y, double z);
 			virtual Surface & setPosition(const Vector & pos);
 			
+			virtual Surface & setAxisX(double x, double y, double z);
 			virtual Surface & setAxisX(const Vector & v);
+			
+			virtual Surface & setAxisY(double x, double y, double z);
 			virtual Surface & setAxisY(const Vector & v);
+			
+			virtual Surface & setAxisZ(double x, double y, double z);
 			virtual Surface & setAxisZ(const Vector & v);
 			
 			virtual Vector & getPosition();
