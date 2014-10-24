@@ -2,8 +2,16 @@
 #include <c3d.h>
 #include <cmath>
 
+
+/* This file implements the methods of the `Vector` class in the c3p.h header.
+ */
+
 namespace c3d 
 {
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * CONSTRUCTORS                                                          *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	
 	Vector::Vector() { x = 0.0; y = 0.0; z = 0.0; }
 	
@@ -22,7 +30,6 @@ namespace c3d
 		return Vector(x,y,z);
 	}
 	
-	
 	Vector & Vector::copy(const Vector & v)
 	{
 		x = v.x; y = v.y; z = v.z;
@@ -33,6 +40,9 @@ namespace c3d
 	
 	
 	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * GETTERS AND SETTERS                                                   *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	
 	Vector & Vector::setxyz(double x, double y, double z)
 	{
@@ -46,7 +56,12 @@ namespace c3d
 	
 	
 	
-	//vector unary operations
+	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * UNARY METHODS                                                         *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Vector & Vector::normalize()
 	{
 		double l = length();
@@ -66,7 +81,14 @@ namespace c3d
 		return std::sqrt(x * x + y * y + z * z);
 	}
 	
-	//vector binary operations
+	
+	
+	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * BINARY METHODS                                                        *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Vector & Vector::add(const Vector & v)
 	{
 		x += v.x;
@@ -110,7 +132,10 @@ namespace c3d
 	
 	
 	
-	//other vector operations
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * OTHER TRANSFORMATIONS                                                 *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Vector & Vector::translate(const Vector & v, double s)
 	{
 		x += s * v.x;
@@ -118,6 +143,8 @@ namespace c3d
 		z += s * v.z;
 		return *this;
 	}
+	
+	
 	
 	
 	

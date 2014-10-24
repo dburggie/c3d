@@ -1,10 +1,16 @@
 #include <c3d.h>
 #include <iostream>
 
+
+/* This file implements the `Ray` class declared in the c3d.h header.
+ */
+
 namespace c3d
 {
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * CONSTRUCTORS                                                          *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	
-	//constructers and more
 	Ray::Ray()
 	{
 		origin = Vector(0.0,0.0,0.0);
@@ -35,7 +41,14 @@ namespace c3d
 		return *this;
 	}
 	
-	//getters / setters
+	
+	
+	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * GETTERS AND SETTERS                                                   *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Ray & Ray::setOrigin(const Vector & v)
 	{
 		origin.copy(v);
@@ -70,7 +83,14 @@ namespace c3d
 		return v;
 	}
 	
-	//ray transformations
+	
+	
+	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * TRANSFORMATIONS                                                       *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Ray & Ray::reflect(const Vector & point, const Vector & normal)
 	{
 		origin.copy(point);
@@ -87,7 +107,13 @@ namespace c3d
 	}
 	
 	
-			//overloaded operators
+	
+	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * OVERLOADED OPERATORS                                                  *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Ray & Ray::operator=(const Ray & ray)
 	{
 		origin.copy(ray.origin);

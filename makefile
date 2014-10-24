@@ -1,38 +1,37 @@
 
+############### Notes ###############
+# $@ - The rule target
+# $< - The left-most dependency
+# $^ - All the dependencies
 
 
 
 # Compilation Settings
-CINC = -I ./include
-CFLAGS = -Wall
-COPT = ${CFLAGS} ${CINC}
-CC = g++ ${COPT}
+CINC = -I ./include # So we can use <> notation when including headers
+CFLAGS = -Wall # Turn on all compiler warnings. Turn this off if too verbose
+COPT = ${CFLAGS} ${CINC} # compiler options, flags and include directory
+CC = g++ ${COPT} # the c compiler we'll be using
 
 
 
 # Targets
-DIR = ./build
-HDR = ./include/c3d.h
-OBJ = ${DIR}/Vector.o ${DIR}/Ray.o
-TST = ${DIR}/VectorTest.exe ${DIR}/RayTest.exe
+HDR = ./include/c3d.h # headers go here
+OBJ = ./build/Vector.o ./build/Ray.o ./build/Surface.o # object file targets
+TST = ./build/VectorTest.exe ./build/RayTest.exe # test executables
 
 
 
 ############### BUILD RULES ###############
 
-all: ${DIR} ${OBJ}
+all: ${OBJ}
 
-
-
-${DIR}:
-	mkdir -p ${DIR}
-
-
-
-${DIR}/Vector.o: source/Vector.cpp ${HDR}
+./build/Vector.o: source/Vector.cpp ${HDR}
 	${CC} -c -o $@ $<
 
-${DIR}/Ray.o: source/Ray.cpp ${HDR}
+./build/Ray.o: source/Ray.cpp ${HDR}
+	${CC} -c -o $@ $<
+
+./build/Surface.o: source/Surface.cpp ${HDR}
 	${CC} -c -o $@ $<
 
 clean:
@@ -45,20 +44,20 @@ clean:
 
 ############### TEST SUITE ###############
 
-test: ${DIR} ${TST}
-	${DIR}/VectorTest.exe
-	${DIR}/RayTest.exe
+test: ${TST}
+	./build/VectorTest.exe
+	./build/RayTest.exe
 
-${DIR}/VectorTest.o: ./tests/VectorTest.cpp ./source/Vector.cpp ${HDR}
+./build/VectorTest.o: ./tests/VectorTest.cpp ./source/Vector.cpp ${HDR}
 	${CC} -c -o $@ $<
 
-${DIR}/VectorTest.exe: ${DIR}/VectorTest.o ${DIR}/Vector.o
+./build/VectorTest.exe: ./build/VectorTest.o ./build/Vector.o
 	${CC} -o $@ $^
 
-${DIR}/RayTest.o: ./tests/RayTest.cpp ./source/Ray.cpp ${HDR}
+./build/RayTest.o: ./tests/RayTest.cpp ./source/Ray.cpp ${HDR}
 	${CC} -c -o $@ $<
 
-${DIR}/RayTest.exe: ${DIR}/RayTest.o ${DIR}/Ray.o ${DIR}/Vector.o
+./build/RayTest.exe: ./build/RayTest.o ./build/Ray.o ./build/Vector.o
 	${CC} -o $@ $^
 
 

@@ -5,8 +5,9 @@ namespace c3d
 {
 	
 	
-	
-	//constructors plus plus
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * CONSTRUCTORS                                                          *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	
 	Surface::Surface()
 	{
@@ -42,8 +43,9 @@ namespace c3d
 	
 	
 	
-	
-	//getters / setters
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * GETTERS AND SETTERS                                                   *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	
 	Surface & Surface::setPosition(const Vector & pos)
 	{
@@ -88,8 +90,6 @@ namespace c3d
 		return axisZ;
 	}
 	
-	
-	
 	Surface & Surface::copyPositionTo(Vector & v)
 	{
 		v.copy(position);
@@ -114,6 +114,11 @@ namespace c3d
 		return *this;
 	}
 	
+	
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * HOUSEKEEPING METHODS                                                  *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	
 	Surface & Surface::normalize()
 	{
 		axisY.normalize(); //Y is now length one
@@ -122,6 +127,5 @@ namespace c3d
 		return *this;
 	}
 	
-	//virtual Surface Surface::clone() is virtual
-	//virtual double Surface::intersection(Ray) is virtual
+	//virtual double Surface::intersection(Ray) is a pure virtual method
 }
