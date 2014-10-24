@@ -207,6 +207,36 @@ namespace c3d
 			virtual double intersection(Ray & ray) = 0; //purely virtual
 			
 	};
+	
+	
+	class Plane : public Surface
+	{
+		protected:
+			/* Inherited from Surface:
+			Vector position;
+			Vector axisX;
+			Vector axisY;
+			Vector axisZ;
+			 */
+			Vector normal;
+		
+		public:
+			Plane();
+			Plane(const Vector & p, const Vector & n);
+			Plane(const Plane & p);
+			
+			//we want to specifically copy over our normal vector
+			virtual Plane & copy(const Plane & p);
+			
+			virtual Plane & setNormal(double x, double y, double z);
+			virtual Plane & setNormal(const Vector & v);
+			
+			//we need to implement our intersection method
+			virtual double intersection(Ray & ray);
+			
+	};
+	
+	
 }
 
 #endif
