@@ -16,7 +16,8 @@ CC = g++ ${COPT} # the c compiler we'll be using
 
 # Targets
 HDR = ./include/c3d.h # headers go here
-OBJ = ./build/Vector.o ./build/Ray.o ./build/Surface.o # object file targets
+C3D = ./source/c3d
+OBJ = ./build/Vector.o ./build/Ray.o ./build/Surface.o ./build/Plane.o
 TST = ./build/VectorTest.exe ./build/RayTest.exe # test executables
 
 
@@ -25,13 +26,16 @@ TST = ./build/VectorTest.exe ./build/RayTest.exe # test executables
 
 all: ${OBJ}
 
-./build/Vector.o: source/Vector.cpp ${HDR}
+./build/Vector.o: ${C3D}/Vector.cpp ${HDR}
 	${CC} -c -o $@ $<
 
-./build/Ray.o: source/Ray.cpp ${HDR}
+./build/Ray.o: ${C3D}/Ray.cpp ${HDR}
 	${CC} -c -o $@ $<
 
-./build/Surface.o: source/Surface.cpp ${HDR}
+./build/Surface.o: ${C3D}/Surface.cpp ${HDR}
+	${CC} -c -o $@ $<
+
+./build/Plane.o: ${C3D}/Plane.cpp ${C3D}/Surface.cpp ${HDR}
 	${CC} -c -o $@ $<
 
 clean:
@@ -48,13 +52,13 @@ test: ${TST}
 	./build/VectorTest.exe
 	./build/RayTest.exe
 
-./build/VectorTest.o: ./tests/VectorTest.cpp ./source/Vector.cpp ${HDR}
+./build/VectorTest.o: ./tests/VectorTest.cpp ${C3D}/Vector.cpp ${HDR}
 	${CC} -c -o $@ $<
 
 ./build/VectorTest.exe: ./build/VectorTest.o ./build/Vector.o
 	${CC} -o $@ $^
 
-./build/RayTest.o: ./tests/RayTest.cpp ./source/Ray.cpp ${HDR}
+./build/RayTest.o: ./tests/RayTest.cpp ${C3D}/Ray.cpp ${HDR}
 	${CC} -c -o $@ $<
 
 ./build/RayTest.exe: ./build/RayTest.o ./build/Ray.o ./build/Vector.o
